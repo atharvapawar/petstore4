@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Pets List Page {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-1">
+    <h2 class="mt-4 mb-4">Pets List </h2>
+    <form class="form-inline mb-4" action="{% url 'search_results' %}" method="GET">
+        <div class="form-group mr-2">
+            <input type="text" name="search" class="from-control"
+            placeholder="Search by name" value="{{ search_query }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    {% if search_query %}
+        <div class="alert alert-info" role="alert">
+            Showing results for : <strong>{{ search_query }}</strong>
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    {% endif %}
+    <ul class="list-group">
+        {% for pet in pets %}
+            <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h2><a href="?name_search={{ pet.name }}" value="{{ name_search }}" style="text-decoration: none;">{{ pet.name }}</a></h2>
+                    <h3>{{ pet.breed }}</h3>
+                    <h4>{{ pet.price }}</h4>
+                </div>
+                <p>
+                    {% if pet.image %}
+                        <img src="{{ pet.image.url }}" class="img-fluid rounded">
+                    {% else %}
+                        <p>No Image</p>
+                    {% endif %}
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+    </div>
+</div>
+{% endblock %}
