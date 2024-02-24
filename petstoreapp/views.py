@@ -11,8 +11,8 @@ def pets_list(request):
     pets = Pet.objects.all()
     #return render(request, 'petstoreapp/pets_list.html', {'pets': pets})
     name_search = request.GET.get('name_search','')
-    pets = Pet.objects.filter(name__icontains=name_search)
-    return render(request, 'petstoreapp/pets_list.html', {'pets': pets, 'name_search':name_search})
+    pets = Pet.objects.filter(id__icontains=name_search)
+    return render(request, 'petstoreapp/pets_list.html', {'pets': pets ,'name_search' : name_search})
 
 def pet_create(request):
     if request.method == 'POST':

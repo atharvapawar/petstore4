@@ -24,7 +24,7 @@
         {% for pet in pets %}
             <li class="list-group-item">
                 <div class="d-flex w-100 justify-content-between">
-                    <h2><a href="?name_search={{ pet.name }}" style="text-decoration: none;">{{ pet.name }}</a></h2>
+                    <h2><a href="?name_search={{ pet.id }}" style="text-decoration: none;">{{ pet.name }}</a></h2>
                     <h3>{{ pet.breed }}</h3>
                     <h4>{{ pet.price }}</h4>
                 </div>
