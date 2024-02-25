@@ -4,16 +4,26 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'pets_list' %}">Pet List</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'pet_create' %}">Add Pet</a>
-        </li>
-    </ul>
+        <div class="ml-auto">
+            <ul class="navbar-nav">
+                <a class="nav-link ml-auto" href="{% url 'home' %}">Home</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pets_list' %}">Pet List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pet_create' %}">Add Pet</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
+    
 </nav>

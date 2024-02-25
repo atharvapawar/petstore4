@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
+from django.contrib.auth import authenticate, login, logout
 from .models import Pet
 from .forms import PetForm
 
@@ -28,3 +29,21 @@ def search_results(request):
     search_query = request.GET.get('search','')
     pets = Pet.objects.filter(Q(name__icontains=search_query) | Q (breed__icontains=search_query))
     return render(request, 'petstoreapp/pets_list.html', {'pets': pets, 'search_query':search_query})
+
+def my_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('pets_list')
+        else:
+            pass
+    return render(request, 'petstoreapp/login.html')
+
+def my_logout(request):
+    logout(request)
+    return redirect('login')
+    
