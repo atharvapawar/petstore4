@@ -1,28 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'home' %}">PetStore</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 15px;">
+    <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 24px;">PetStore</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="ml-auto">
             <ul class="navbar-nav">
-                <a class="nav-link ml-auto" href="{% url 'home' %}">Home</a>
+                
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'pets_list' %}">Pet List</a>
+                <a class="nav-link ml-auto" href="{% url 'home' %}" style="font-size: 20px;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'pet_create' %}">Add Pet</a>
+                    <a class="nav-link" href="{% url 'pets_list' %}" style="font-size: 20px;">Pet List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pet_create' %}" style="font-size: 20px;">Add Pet</a>
                 </li>
 
                 <li class="nav-item">
                 {% if request.user.is_authenticated %}
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    <a class="nav-link" href="{% url 'logout' %}" style="font-size: 20px;">Logout</a>
                 {% else %}
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'login' %}" style="font-size: 20px;">Login</a>
                 </li>
                 {% endif %}
             </ul>
         </div>
     </div>
-    
 </nav>
